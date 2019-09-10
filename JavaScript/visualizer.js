@@ -3,7 +3,7 @@ function drawGraph(visualizerData){
   for(i=0; i < visualizerData["array"].length; i++){
     var width = parseInt(window.innerWidth, 10)/visualizerData["array"].length;
     var newItem = `
-      <div style='height: ${visualizerData["array"][i]}px;width:50px;background-color: #555'>
+      <div style='height: ${visualizerData["array"][i]*10}px;width:${width}px;background-color: #555;display:inline-block;'>
       </div>
     `
 
