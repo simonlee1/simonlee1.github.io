@@ -24,24 +24,28 @@
     <div include-html="Shared/OptionBar.html"></div>
     <!----------------->
 
-    <p id="testValue"></p>
+    <div class="graph">
+      <div class="elements" id="arrayHolder">
+      </div>
+    </div>
 
 
     <script>
+      function updateOptions(algorithm){
+        visualizerData["algorithm"] = algorithm;
+        visualizerData["size"] = $("#arraySize").val();
+        $("#testValue").text(visualizerData["algorithm"]);
+      }
+
       includeHTML();
       var visualizerData = {};
-      //initializeVisualizer(visualizerData)
-      function updateOptions(algorithm){
-        visualizer["algorithm"] = algorithm;
-        visualizer["size"] = $("#arraySize").val();
-      }
+      initializeVisualizer(visualizerData)
 
       $(document).on('input', '#arraySize', function() {
         updateOptions(visualizerData["algorithm"]);
-        $("#testValue").text($("#arraySize").val());
       });
 
-
+      drawGraph(visualizerData);
 
 
 
