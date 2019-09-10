@@ -10,12 +10,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="JavaScript/algorithms.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Sorting Algorithm Visualizer</title>
   </head>
-  <body>
+  <body style="background-color:#000000">
     <!-- NavBar -->
     <div include-html="Shared/NavBar.html"></div>
     <!------------>
@@ -24,18 +25,27 @@
     <div include-html="Shared/OptionBar.html"></div>
     <!----------------->
 
-    <div class="graph">
-      <div class="elements" id="arrayHolder">
-      </div>
+    <div class="graph d-flex justify-content-center mt-4 mb-3">
+      <div class="elements" id="arrayHolder"></div>
     </div>
+
+    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="run()">Start</button>
 
 
     <script>
       function updateOptions(algorithm){
         visualizerData["algorithm"] = algorithm;
         visualizerData["size"] = $("#arraySize").val();
+        visualizerData["array"] = generateRandomArray($("#arraySize").val());
         $("#testValue").text(visualizerData["algorithm"]);
       }
+
+      function generateNewGraph(){
+        updateOptions(visualizerData["algorithm"]);
+        drawGraph(visualizerData);
+      }
+
+
 
       includeHTML();
       var visualizerData = {};
@@ -43,11 +53,19 @@
 
       $(document).on('input', '#arraySize', function() {
         updateOptions(visualizerData["algorithm"]);
+        drawGraph(visualizerData);
+      });
+
+      $( window ).resize(function() {
+        drawGraph(visualizerData);
       });
 
       drawGraph(visualizerData);
 
-
+      function run(){
+        bubbleSort(visualizerData);
+        drawGraph(visualizerData);
+      }
 
 
     </script>

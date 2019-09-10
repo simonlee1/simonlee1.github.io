@@ -1,9 +1,11 @@
 function drawGraph(visualizerData){
-
+  $("#arrayHolder").empty();
+  var maxHeight = 500;
   for(i=0; i < visualizerData["array"].length; i++){
-    var width = parseInt(window.innerWidth, 10)/visualizerData["array"].length;
+    var height = maxHeight * (visualizerData["array"][i]/visualizerData["array"].length)
+    var width = (parseInt(window.innerWidth, 10)/visualizerData["array"].length)-5;
     var newItem = `
-      <div style='height: ${visualizerData["array"][i]*10}px;width:${width}px;background-color: #555;display:inline-block;'>
+      <div style='height: ${height}px;width:${width}px;background-color: #555;display:inline-block;'>
       </div>
     `
 
