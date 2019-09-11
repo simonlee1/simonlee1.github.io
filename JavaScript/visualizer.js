@@ -1,9 +1,9 @@
-function drawGraph(visualizerData){
+function drawGraph(currentData){
   $("#arrayHolder").empty();
   var maxHeight = 500;
-  for(i=0; i < visualizerData["array"].length; i++){
-    var height = maxHeight * (visualizerData["array"][i]/visualizerData["array"].length)
-    var width = (parseInt(window.innerWidth, 10)/visualizerData["array"].length)-5;
+  for(i=0; i < currentData["array"].length; i++){
+    var height = maxHeight * (currentData["array"][i]/currentData["array"].length)
+    var width = (parseInt(window.innerWidth, 10)/currentData["array"].length)-5;
     var newItem = `
       <div style='height: ${height}px;width:${width}px;background-color: #555;display:inline-block;'>
       </div>
@@ -12,10 +12,10 @@ function drawGraph(visualizerData){
   }
 }
 
-function initializeVisualizer(visualizerData){
-  visualizerData["algorithm"] = "bubble";
-  visualizerData["size"] = 50;
-  visualizerData["array"] = generateRandomArray(50);
+function initializeVisualizer(data){
+  data["algorithm"] = "bubble";
+  data["size"] = 60;
+  data["array"] = generateRandomArray(60);
 }
 
 function shuffleArray(array) {
