@@ -70,14 +70,15 @@
         for (k = 0; k < data["array"].length; k++){
           for (j = 0; j < data["array"].length-k-1; j++){
             console.log(`i Value: ${k}`);
+            setTimeout(doNothing,5000);
+            drawGraph(data);
             console.log(`j Value: ${j}`);
             if (data["array"][j] > data["array"][j+1]){
               var temp = data["array"][j];
               data["array"][j] = data["array"][j+1];
               data["array"][j+1] = temp;
             }
-            setTimeout(doNothing,5000);
-            drawGraph(data);
+
           }
         }
       }
