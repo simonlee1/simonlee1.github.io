@@ -8,7 +8,6 @@ function drawGraph(visualizerData){
       <div style='height: ${height}px;width:${width}px;background-color: #555;display:inline-block;'>
       </div>
     `
-
     $("#arrayHolder").append(newItem);
   }
 }
