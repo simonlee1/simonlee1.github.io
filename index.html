@@ -79,7 +79,7 @@
           for (j = 0; j < data.length-k-1; j++){
             console.log(`i Value: ${k}`);
             console.log(`j Value: ${j}`);
-            if (data[j].arrayValue > data[j+1].arrayValue){
+            if (parseInt(data[j].arrayValue) > parseInt(data[j+1].arrayValue)){
               switches.push([j, j+1]);
             }
           }
@@ -122,6 +122,7 @@
           if (curIndex >= switches.length) {
             clearInterval(id);
           } else {
+            console.log("switching elements");
             switchElement(array, switches[curIndex][0], switches[curIndex][1]);
             curIndex += 1;
           }
