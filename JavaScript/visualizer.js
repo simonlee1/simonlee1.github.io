@@ -5,7 +5,7 @@ function drawGraph(currentData){
     var height = maxHeight * (currentData["array"][i]/currentData["array"].length)
     var width = (parseInt(window.innerWidth, 10)/currentData["array"].length)-5;
     var newItem = `
-      <div style='height: ${height}px;width:${width}px;background-color: #555;display:inline-block;'>
+      <div class='arrayElement' arrayValue='${currentData["array"][i]}' style='height: ${height}px;width:${width}px;background-color: #555;display:inline-block;'>
       </div>
     `
     $("#arrayHolder").append(newItem);

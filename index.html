@@ -63,23 +63,27 @@
       drawGraph(visualizerData);
 
       function doNothing(){
-
+        console.log("waiting...");
       }
+      function wait(ms){
+        var curTime = new Date().getTime();
+        var endTime = ms + curTime;
 
+        while (curTime < endTime){
+          curTime = new Date().getTime();
+        }
+      }
       function bubbleSort(data){
-        for (k = 0; k < data["array"].length; k++){
-          for (j = 0; j < data["array"].length-k-1; j++){
+        for (k = 0; k < data.length; k++){
+          for (j = 0; j < data.length-k-1; j++){
             console.log(`i Value: ${k}`);
-            setTimeout(doNothing,5000);
-            drawGraph(data);
             console.log(`j Value: ${j}`);
-            if (data["array"][j] > data["array"][j+1]){
-              var temp = data["array"][j];
-              data["array"][j] = data["array"][j+1];
-              data["array"][j+1] = temp;
+            if (data[j].arrayValue > data[j+1].arrayValue){
+              switchElement(data, j, j+1);
             }
-
+            wait(200);
           }
+
         }
       }
 
@@ -92,8 +96,21 @@
         return true;
       }
 
+
+      function getListOfElements(){
+        return document.getElementsByClassName("arrayElement");
+      }
+
+
+      function switchElement(array, index1, index2){
+        var temp = array[index1].style.height;
+        array[index1].style.height = array[index2].style.height;
+        array[index2].style.height = temp;
+      }
+
       function run(){
-        bubbleSort(visualizerData);
+        var array = getListOfElements();
+        bubbleSort(array);
       }
 
 
