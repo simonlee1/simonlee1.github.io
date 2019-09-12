@@ -74,17 +74,18 @@
         }
       }
       function bubbleSort(data){
+        var switches = [];
         for (k = 0; k < data.length; k++){
           for (j = 0; j < data.length-k-1; j++){
             console.log(`i Value: ${k}`);
             console.log(`j Value: ${j}`);
             if (data[j].arrayValue > data[j+1].arrayValue){
-              switchElement(data, j, j+1);
+              switches.push([j, j+1]);
             }
-            wait(200);
           }
-
         }
+
+        return switches;
       }
 
       function sorted(array){
@@ -103,14 +104,28 @@
 
 
       function switchElement(array, index1, index2){
-        var temp = array[index1].style.height;
+        var tempHeight = array[index1].style.height;
+        var tempValue = array[index1].arrayValue;
         array[index1].style.height = array[index2].style.height;
-        array[index2].style.height = temp;
+        array[index1].arrayValue = array[index2].arrayValue
+        array[index2].style.height = tempHeight;
+        array[index2].arrayValue = tempValue;
       }
 
       function run(){
         var array = getListOfElements();
-        bubbleSort(array);
+        var switches = bubbleSort(array);
+        var id = setInterval(frame, 1000);
+        var curIndex = 0;
+
+        function frame() {
+          if (curIndex >= switches.length) {
+            clearInterval(id);
+          } else {
+            switchElement(array, switches[curIndex][0], switches[curIndex][1]);
+            curIndex += 1;
+          }
+        }
       }
 
 
