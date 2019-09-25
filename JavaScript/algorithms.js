@@ -114,5 +114,43 @@ function mergeSort(array, left, right, switches){
     merge(array, left, mid, right, switches);
   }
 
+}
 
+
+function heapify(array, index, switches, n){
+  var largest = index;
+  var leftChild = 2 * index + 1;
+  var rightChild = 2 * index + 2;
+
+  if(leftChild < n && array[leftChild] > array[largest]){
+    largest = leftChild;
+  }
+
+  if(rightChild < n && array[rightChild] > array[largest]){
+    largest = rightChild;
+  }
+
+  if(largest != index){
+    swap(array, largest, index);
+    switches.push([largest,index]);
+
+    heapify(array, largest, switches, n);
+  }
+}
+
+
+function heapSort(array){
+  var switches = [];
+  for (i = Math.floor(array.length / 2) - 1; i >= 0; i--){
+    heapify(array, i, switches, array.length);
+  }
+
+  for (i = array.length - 1; i >= 0; i--){
+    swap(array, 0, i);
+    switches.push([0,i]);
+
+    heapify(array, 0, switches, i );
+  }
+
+  return switches;
 }

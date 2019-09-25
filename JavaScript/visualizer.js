@@ -34,6 +34,9 @@ function getSpeedWeight(algorithm){
   else if (algorithm == "merge"){
     speedWeight = 100;
   }
+  else if(algorithm == "heap"){
+    speedWeight = 100;
+  }
   return speedWeight;
 }
 
@@ -148,6 +151,9 @@ function retrieveSwitches(array){
     var switches = [];
     mergeSort(array, 0, array.length -1, switches);
     return switches;
+  }
+  else if(visualizerData["algorithm"] == "heap"){
+    return heapSort(array);
   }
   else{
     return [];
