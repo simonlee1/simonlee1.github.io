@@ -5,27 +5,27 @@
   <div class="collapse navbar-collapse" id="optionBar">
     <ul class="navbar-nav">
       <li class="nav-item mr-3 mb-2">
-        <a href="#" class="text-white" onclick="generateNewGraph()">Create New Array</a>
+        <a href="#" class="text-white" onclick="generateNewGraph();">Create New Array</a>
       </li>
       <li class="nav-item mr-3 mb-0">
         <form>
           <div class="form-group">
-            <label class="text-white" for="formControlRange">Array Size</label>
+            <label class="text-white" for="formControlRange">Array Size / Speed</label>
             <input type="range" class="form-control-range" id="arraySize">
           </div>
         </form>
       </li>
-      <li class="nav-item mr-3 mb-2">
-        <a href="#" class="text-white" onclick="updateOptions('bubble')">Bubble Sort</a>
+      <li class="nav-item mr-3 mb-2" name="algorithm" style="text-decoration: underline;">
+        <a href="#" class="text-white" name="algorithm" onclick="updateOptions('bubble', this)">Bubble Sort</a>
       </li>
-      <li class="nav-item mr-3 mb-2">
-        <a href="#" class="text-white" onclick="updateOptions('quick')">Quick Sort</a>
+      <li class="nav-item mr-3 mb-2"  name="algorithm" style="text-decoration: none;">
+        <a href="#" class="text-white" name="algorithm" onclick="updateOptions('select', this)">Selection Sort</a>
       </li>
-      <li class="nav-item mr-3 mb-2">
-        <a href="#" class="text-white" onclick="updateOptions('merge')">Merge Sort</a>
+      <li class="nav-item mr-3 mb-2" name="algorithm" style="text-decoration: none;">
+        <a href="#" class="text-white" name="algorithm" onclick="updateOptions('quick', this)">Quick Sort</a>
       </li>
-      <li class="nav-item mr-3 mb-2" onclick="updateOptions('select')">
-        <a href="#" class="text-white">Selection Sort</a>
+      <li class="nav-item mr-3 mb-2" name="algorithm" style="text-decoration: none;">
+        <a href="#" class="text-white" name="algorithm" onclick="updateOptions('merge', this)">Merge Sort</a>
       </li>
     </ul>
   </div>
